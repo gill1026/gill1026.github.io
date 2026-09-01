@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORDA 교육 커리큘럼</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#2E3237; --bg-deep:#25282C; --panel:#343940; --panel-2:#3A4047;
+    --line:#43484F; --ink:#E5EAF0; --ink-dim:#A7AEB8; --ink-faint:#7C838D;
+    --accent:#F2CC30;
+    --font:"Gothic A1","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg-deep);color:var(--ink);font-family:var(--font);
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+  }
+  .wrap{max-width:520px;margin:0 auto;background:var(--bg);
+    background-image:
+      radial-gradient(115% 55% at 82% 2%, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 60%),
+      linear-gradient(172deg,#2B2F34 0%,#31353B 55%,#2A2E33 100%);
+    min-height:100vh;overflow:hidden;position:relative}
+
+  /* 헤더 */
+  header{padding:26px 22px 0;display:flex;align-items:center;gap:12px}
+  .mark{width:78px;display:block}
+  .org{font-size:11px;line-height:1.4;color:var(--ink-dim);font-weight:500;letter-spacing:-.01em}
+  .org b{display:block;color:var(--ink);font-weight:700}
+
+  /* 히어로 */
+  .hero{padding:34px 22px 30px;position:relative}
+  .hero h1{font-size:34px;font-weight:900;letter-spacing:-.04em;line-height:1.12}
+  .hero p{margin-top:14px;font-size:15px;color:var(--ink-dim);letter-spacing:-.02em;line-height:1.62}
+  .chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:7px}
+  .chip{border:1px solid var(--line);border-radius:99px;padding:6px 13px;font-size:12.5px;
+    font-weight:600;color:var(--ink-dim)}
+  .chip.hi{background:var(--accent);border-color:var(--accent);color:#26292D;font-weight:800}
+  .watermark{position:absolute;right:-70px;top:8px;width:260px;opacity:.045;pointer-events:none}
+
+  /* 스테이지 */
+  main{padding:0 22px 8px;position:relative}
+  .stage{margin-bottom:34px}
+  .stage-head{display:flex;align-items:baseline;gap:10px;padding-bottom:14px;
+    border-bottom:1px solid var(--line);margin-bottom:20px}
+  .stage-no{font-size:12px;font-weight:800;color:var(--accent)}
+  .stage-name{font-size:19px;font-weight:800;letter-spacing:-.035em}
+  .stage-range{margin-left:auto;font-size:12px;font-weight:600;color:var(--ink-faint);flex:none}
+
+  .session{display:grid;grid-template-columns:52px 1fr;gap:0 14px;position:relative;padding-bottom:22px}
+  .session::before{content:"";position:absolute;left:24px;top:34px;bottom:2px;width:4px;
+    background-image:linear-gradient(var(--line) 55%,rgba(0,0,0,0) 0);
+    background-size:4px 14px;background-repeat:repeat-y}
+  .stage .session:last-child::before{display:none}
+  .no{font-size:14px;font-weight:800;text-align:center;padding:5px 0;border-radius:8px;
+    background:var(--panel);border:1px solid var(--line);height:fit-content;letter-spacing:-.03em}
+  .session.key .no{background:var(--accent);border-color:var(--accent);color:#26292D}
+  .t{font-size:17px;font-weight:800;letter-spacing:-.035em;line-height:1.32;padding-top:2px}
+  .d{margin-top:9px;font-size:14.5px;color:var(--ink-dim);line-height:1.68;letter-spacing:-.015em}
+  .d b{color:var(--ink);font-weight:700}
+
+  /* 용어 풀이 */
+  .gloss{margin-top:12px;background:var(--panel);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:8px;padding:12px 14px}
+  .gloss dt{font-size:13.5px;font-weight:800;letter-spacing:-.02em}
+  .gloss dd{font-size:13.5px;color:var(--ink-dim);line-height:1.6;margin-top:3px;letter-spacing:-.015em}
+  .gloss dt+dd+dt{margin-top:10px}
+
+  /* 하단 */
+  .perks{margin:0 22px 26px;background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:22px}
+  .perks h2{font-size:17px;font-weight:800;letter-spacing:-.035em;margin-bottom:14px}
+  .perks ul{list-style:none}
+  .perks li{font-size:14.5px;color:var(--ink-dim);line-height:1.62;padding-left:16px;
+    position:relative;letter-spacing:-.015em}
+  .perks li+li{margin-top:10px}
+  .perks li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:4px;
+    background:var(--accent);border-radius:1px}
+
+  .join{margin:0 22px 40px;padding:24px 22px;border-radius:14px;
+    background:linear-gradient(150deg,#3A4047,#31363C);border:1px solid var(--line)}
+  .join h2{font-size:20px;font-weight:900;letter-spacing:-.04em;line-height:1.3}
+  .join .rows{margin-top:16px}
+  .row{display:grid;grid-template-columns:74px 1fr;gap:12px;font-size:14.5px;letter-spacing:-.015em}
+  .row+.row{margin-top:11px}
+  .row .k{color:var(--ink-faint);font-weight:600}
+  .row .v{color:var(--ink);font-weight:600;line-height:1.55}
+  .apply{margin-top:20px;padding:20px 16px;background:#2E3238;border:1px solid var(--line);
+    border-radius:12px;text-align:center}
+  .qrbox{display:block;width:150px;height:150px;margin:0 auto;background:#fff;
+    border-radius:10px;padding:7px;text-decoration:none}
+  .qrbox img{width:100%;display:block}
+  .qrbox:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .qrcap{margin-top:14px;font-size:16px;font-weight:800;letter-spacing:-.03em}
+  .qrsub{margin-top:5px;font-size:13px;color:var(--ink-faint);letter-spacing:-.02em}
+  .foot{padding:0 22px 46px;font-size:12.5px;color:var(--ink-faint);line-height:1.6;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="mark" src="data:image/png;base64,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" alt="ORDA">
+    <div class="org">한양대학교 ERICA<b>소프트웨어융합대학 자율주행 학회</b></div>
+  </header>
+
+  <section class="hero">
+    <img class="watermark" src="data:image/png;base64,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" alt="">
+    <h1>8번의 교육으로,<br>내 코드로 트랙 한 바퀴</h1>
+    <p>자율주행이 처음이어도 괜찮습니다. 원리를 훑고, 코드를 뜯어보고,
+       직접 만든 코드를 실제 대회 트랙에서 달리게 하는 데까지 8번이면 됩니다.</p>
+    <div class="chips">
+      <span class="chip hi">총 8회 · 회당 1시간</span>
+      <span class="chip">오프라인</span>
+      <span class="chip">사전 지식 필요 없음</span>
+    </div>
+  </section>
+
+  <main>
+    <div class="stage">
+      <div class="stage-head">
+        <span class="stage-no">STAGE 1</span>
+        <span class="stage-name">자율주행 감 잡기</span>
+        <span class="stage-range">1–3회</span>
+      </div>
+
+      <div class="session">
+        <div class="no">1회</div>
+        <div>
+          <div class="t">자율주행의 큰 그림 그리기</div>
+          <div class="d">차가 스스로 달린다는 건 결국 <b>보고 → 판단하고 → 움직이는</b> 세 단계입니다.
+            이 구조를 먼저 잡고, 자율주행을 만드는 두 갈래 방식을 비교해 봅니다.
+            개발 환경 ROS2도 이날 함께 설치합니다.</div>
+          <dl class="gloss">
+            <dt>룰베이스</dt>
+            <dd>사람이 "차선이 왼쪽으로 치우치면 오른쪽으로 꺾어라" 같은 규칙을 하나하나 짜주는 방식입니다.</dd>
+            <dt>E2E · VLA</dt>
+            <dd>규칙을 알려주는 대신, AI가 주행 데이터를 보고 스스로 운전을 배우게 하는 방식입니다.</dd>
+            <dt>ROS2</dt>
+            <dd>카메라·모터·프로그램이 서로 데이터를 주고받게 해주는, 로봇 개발의 공용어 같은 도구입니다.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="no">2–3회</div>
+        <div>
+          <div class="t">완성된 코드 열어보고 굴려보기</div>
+          <div class="d">이미 돌아가는 룰베이스 자율주행 코드를 함께 읽습니다.
+            그다음 <b>시뮬레이터</b> 안에서 직접 실행해 봅니다. 컴퓨터 속 가상 트랙이라
+            몇 번을 박아도 부서지는 게 없습니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-head">
+        <span class="stage-no">STAGE 2</span>
+        <span class="stage-name">코드 뜯어서 내 것으로</span>
+        <span class="stage-range">4–6회</span>
+      </div>
+
+      <div class="session">
+        <div class="no">4회</div>
+        <div>
+          <div class="t">카메라가 찍은 영상 다듬기</div>
+          <div class="d">사람 눈에는 대번에 보이는 차선이 컴퓨터에게는 그저 숫자 덩어리입니다.
+            필요 없는 부분을 걷어내고 차선만 또렷하게 남기는 작업을 다룹니다.</div>
+          <dl class="gloss">
+            <dt>전처리</dt>
+            <dd>원본 영상을 바로 쓰지 않고, 판단하기 좋은 형태로 미리 손질하는 단계입니다.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="no">5회</div>
+        <div>
+          <div class="t">차선 한가운데로, 흔들리지 않게</div>
+          <div class="d">차가 중앙에서 얼마나 벗어났는지 숫자로 계산하고,
+            그만큼 핸들을 꺾습니다. 이때 너무 급하게 꺾으면 좌우로 덜덜 떨리며 달리게 되는데,
+            이걸 부드럽게 잡는 방법을 배웁니다.</div>
+          <dl class="gloss">
+            <dt>조향 안정화</dt>
+            <dd>핸들 조작이 튀지 않도록 다듬는 것. 자율주행이 "잘 달린다"는 느낌을 좌우하는 부분입니다.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="session key">
+        <div class="no">6회</div>
+        <div>
+          <div class="t">내 코드를 진짜 자동차에 올리기</div>
+          <div class="d">지금까지 만든 코드를 ROS2 패키지로 묶어 <b>스케일카</b>에 적용합니다.
+            손바닥만 하지만 카메라로 보고 스스로 달리는, 진짜 자율주행차입니다.
+            화면 밖에서 처음으로 내 코드가 움직이는 순간입니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-head">
+        <span class="stage-no">STAGE 3</span>
+        <span class="stage-name">트랙에서 직접</span>
+        <span class="stage-range">7–8회</span>
+      </div>
+
+      <div class="session">
+        <div class="no">7회</div>
+        <div>
+          <div class="t">대회에서 부딪힌 문제, 그때 어떻게 풀었나</div>
+          <div class="d">차선 주행, 주차, 장애물 회피.
+            선배들이 실제 자율주행 대회에서 마주친 상황과 그때 쓴 해법을 그대로 뜯어봅니다.</div>
+        </div>
+      </div>
+
+      <div class="session key">
+        <div class="no">8회</div>
+        <div>
+          <div class="t">대회 트랙에서, 내가 만든 코드로 완주</div>
+          <div class="d">실제 대회에 썼던 트랙 위에 각자의 스케일카를 올립니다.
+            8번 전에는 아무것도 몰랐던 코드가 혼자서 한 바퀴를 돕니다.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="perks">
+    <h2>ORDA에서 더 할 수 있는 것</h2>
+    <ul>
+      <li>대회에 직접 나가본 선배들에게 물어보고, 경험을 그대로 전해 듣기</li>
+      <li>요즘 자율주행 기술이 어디까지 왔는지, 무엇을 공부하면 좋을지 함께 정리</li>
+      <li>학회가 여는 교내 자율주행 경진대회와 전국 대회 참가</li>
+    </ul>
+  </section>
+
+  <section class="join">
+    <h2>신입 부원을 모집합니다</h2>
+    <div class="rows">
+      <div class="row"><span class="k">교육 방식</span><span class="v">오프라인, 총 8회 (회당 1시간)</span></div>
+      <div class="row"><span class="k">일정</span><span class="v">시험 기간을 피해 진행하며, 자세한 일정은 OT 때 공개합니다</span></div>
+      <div class="row"><span class="k">모집 대상</span><span class="v">자율주행이 궁금한 누구나 · 사전 지식 필요 없음</span></div>
+      <div class="row"><span class="k">신청</span><span class="v">아래 QR을 찍어 구글폼 작성</span></div>
+    </div>
+    <div class="apply">
+      <a class="qrbox" href="https://forms.gle/Bww2gkvToNu1vtG38"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApAAAAKQCAIAAACn190HAAAOxklEQVR4nO3dMY7k1gFFUbcxexHgwPtfhwMDWg0dj4IWPjRf9a55Tjzo+UWy6oLR+3qe5x8AwLZ/fvoAAMCfE2wACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAI+HH7P/jtX/++/V+8yu///c/Rv799/evnue30894+/9r1X7s+t9WvP9+7/Xx6wwaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoCA63vYp+p7t6fW9mjXrv/aPnT9PPX7W79fdWvPz21r99cbNgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AATM7WGfWtsrtRf7vfr+8W1r+81r56m7/fyvWTt//ffBGzYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAE5Pew+d7a/u7aHvNta+ev75Gv7XPXPy8t3rABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgwB42P6nvZ59a24de+7yn1vak1+6XfWv+Cm/YABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAEJDfw7Yv+721feW1feK1Pe/6fvbt6396ntu/D/X7ddvaeeq8YQNAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0DA3B727b1Yvlfft67//TX167N2/rXrc2rtPG/jDRsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACru9hn+6/8ln1feJT9efT+T/79+tcnxZv2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABBwfQ/7ttv7zadO92Xr+9Br519z+3qeql//tedt7e/Xfw9Pve3zesMGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAgPwe9qm1fdm1feLbe8Nr+7Wn1u7X2h7zqdvPQ/15W7P2PKx9H2/zhg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABX8/zfPoMf6v6Pu7a/uvafu3anrf71XL792HtetY/79rv+e3P6w0bAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAn7c/g/q+7tre8lv239d+7yn1p6Hte9X/frcfj7X7u/a933teb7NGzYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAEfD3P8+kz/GRtD7W+x1zfD17bu60/D7et7Umvedv1Wft9rv9eecMGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAgB+3/4O1PdHb+7Jr+823rd3f29b2jH1f+CvWnue1/e+159MbNgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAR8Pc/z6TP85Pa+8tre6m23r0/9+q+df23feu08a972/XKe793+vnjDBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgID8Hvaa23uot63tJd9mn/jXqu9nrz3Pa5/3bb8Pa7xhA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQMDcHvaptb3YU/aY/7///qm189y2tpe8dn9PrZ1/7fu49vdPecMGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAgOt72Gt7omt7sWvW9mVP1a//bWv72fXnZ+337ba1z7t2ntu8YQNAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0DAj9v/wdre7Zq1fd+3qe/p1r8v9fO/7fdtbS987frf/n3whg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQAB1/ew6/uvp+r7yqduf97Tv792/dfOs/Z5T63tH6/9vq19v+rWfp+9YQNAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0DA9T3sU2t7vW87z9qe7toebd3b9oxPrV2ftf3vNbd/T9Z+r7xhA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQMDX8zyfPsPf6vZe7Np+9m31z1vfG67vha/tGd/mfn1W/fzesAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBgbg+7vn/8tr3e+vlPeT5/7d8/tfa83Va/X7e97fn3hg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQAB1/ew7de21O9XfY+5fv7b1vba69/3U2v70Kfq5/eGDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAE/Pn2AP1rbH729p7u2z/q2veH6+W9bO//a/br9/V37vPXv46m132dv2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAwt4d929re6tv2hk+tnee2tf3jteu/9n1Z288+tXZ/16w9b96wASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABICC/h317X/b2XuzaPm59f3ft/Gt7w2vP26m163nb2v1a+/1c+77fPo83bAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAjI72GfWtvTvb0vW9+vXdufftv+7tp5Tq2dZ+37u/b7cFv9efaGDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGv28Ne2w8+tbbPemptr7f+PKx93lNr12eN6/NZa98vb9gAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQcH0P+/Y+6Nq+79p56vvTb9vrXdvnXnue185z6vbzvHZ9PG+/ljdsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACPh6nufqf/C2PePb1vaS16zt165dz7Xrc9va9b/tbXv29fOc8oYNAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAT8+fYA/stf7WfU93bXreWrt+b99f29b249/237zKef5njdsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACJjbwz61tn+8tp9qT/d7a3vPa8/zqbXreer29a///TVv+7zesAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASAgv4dNy+295LV93LXznFrb/17bO3/b37+tvqd+mzdsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACLCHzU/q+7L185+6vX9c3yeu70OfWtvPtqf+a3nDBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgID8Hvba/u6at+0B37a2j3vqbedZu19v+37d/rxrz/Nt3rABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgYG4P+217sWvW9oDX9ozX1K/P7fOv7cG/7frfvp5v64U3bAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAj4ep7n02cAAP6EN2wACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACPgf2u3PXoyRCp0AAAAASUVORK5CYII=" alt="지원 구글폼 QR"></a>
+      <div class="qrcap">지원 구글폼</div>
+      <div class="qrsub">QR을 찍거나, 눌러서 바로 신청</div>
+    </div>
+  </section>
+
+  <p class="foot">한양대학교 ERICA 소프트웨어융합대학 자율주행 학회 ORDA</p>
+</div>
+</body>
+</html>
