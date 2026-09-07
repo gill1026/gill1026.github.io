@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORDA 교육 커리큘럼</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2F3F5;
+    --card:#FFFFFF;
+    --ink:#1D2126;
+    --ink-2:#414952;
+    --ink-3:#6B7480;
+    --line:#DFE2E7;
+    --accent:#F2CC30;
+    --dark:#2E3237;
+    --font:"Gothic A1","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:600px;margin:0 auto;padding:0 18px 56px}
+
+  /* 헤더 */
+  header{display:flex;align-items:center;gap:12px;padding:24px 2px 0}
+  header img{width:74px;display:block}
+  .org{font-size:12px;line-height:1.4;color:var(--ink-3);font-weight:600}
+  .org b{display:block;color:var(--ink);font-weight:800}
+
+  /* 제목 */
+  .hero{padding:30px 2px 26px}
+  .hero h1{font-size:32px;font-weight:900;letter-spacing:-.04em;line-height:1.2}
+  .hero .sub{margin-top:12px;font-size:16px;font-weight:700;color:#8A6D00;letter-spacing:-.03em}
+  .hero .lead{margin-top:14px;font-size:15.5px;color:var(--ink-2);letter-spacing:-.02em;line-height:1.68}
+  .facts{margin-top:20px;display:flex;flex-wrap:wrap;gap:7px}
+  .fact{background:#fff;border:1px solid var(--line);border-radius:99px;
+    padding:7px 14px;font-size:13.5px;font-weight:700;color:var(--ink-2)}
+  .fact.hi{background:var(--accent);border-color:var(--accent);color:#33290A}
+
+  /* 구간 */
+  .part{margin-top:34px}
+  .part-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:0 2px}
+  .part-head .bar{width:5px;height:19px;background:var(--accent);border-radius:3px;flex:none}
+  .part-head h2{font-size:19px;font-weight:900;letter-spacing:-.04em}
+  .part-head .rng{margin-left:auto;font-size:13px;font-weight:700;color:var(--ink-3);flex:none}
+
+  /* 회차 카드 */
+  .s{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 20px 18px;margin-bottom:10px}
+  .s .no{display:inline-block;background:var(--dark);color:#fff;font-size:13px;font-weight:800;
+    padding:4px 11px;border-radius:7px;letter-spacing:-.02em}
+  .s h3{margin-top:12px;font-size:19.5px;font-weight:900;letter-spacing:-.04em;line-height:1.34}
+  .s ul{margin-top:13px;list-style:none}
+  .s li{position:relative;padding-left:17px;font-size:15.5px;color:var(--ink-2);
+    letter-spacing:-.02em;line-height:1.62}
+  .s li+li{margin-top:8px}
+  .s li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;
+    border-radius:50%;background:var(--accent)}
+  .s li b{color:var(--ink);font-weight:800}
+  .s .tail{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--ink-3);letter-spacing:-.02em;line-height:1.6}
+
+  /* 용어 */
+  .terms{margin-top:34px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 20px}
+  .terms h2{font-size:19px;font-weight:900;letter-spacing:-.04em}
+  .terms .cap{margin-top:6px;font-size:14px;color:var(--ink-3);letter-spacing:-.02em}
+  .terms dl{margin-top:16px}
+  .terms dt{font-size:15.5px;font-weight:900;letter-spacing:-.03em}
+  .terms dd{margin-top:4px;font-size:15px;color:var(--ink-2);line-height:1.6;letter-spacing:-.02em}
+  .terms dd+dt{margin-top:15px;padding-top:15px;border-top:1px solid #EDEFF2}
+
+  /* 신청 */
+  .join{margin-top:34px;background:var(--dark);border-radius:16px;padding:26px 22px;color:#E9EDF2}
+  .join h2{font-size:22px;font-weight:900;letter-spacing:-.04em;color:#fff}
+  .join .rows{margin-top:18px}
+  .row{display:flex;gap:14px;font-size:15px;letter-spacing:-.02em}
+  .row+.row{margin-top:12px}
+  .row .k{width:74px;flex:none;color:#9AA3AE;font-weight:700}
+  .row .v{color:#E9EDF2;font-weight:600;line-height:1.55}
+  .btn{margin-top:22px;display:block;text-align:center;background:var(--accent);color:#33290A;
+    font-size:17px;font-weight:900;letter-spacing:-.03em;padding:17px;border-radius:11px;
+    text-decoration:none}
+  .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .qr{margin-top:18px;display:flex;align-items:center;gap:14px;
+    background:#3A4047;border-radius:11px;padding:13px}
+  .qr img{width:78px;height:78px;background:#fff;border-radius:7px;padding:5px;flex:none;display:block}
+  .qr p{font-size:13.5px;color:#9AA3AE;line-height:1.55;letter-spacing:-.02em}
+  .foot{margin-top:26px;text-align:center;font-size:13px;color:var(--ink-3);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="data:image/png;base64,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" alt="ORDA">
+    <div class="org">한양대학교 ERICA<b>소프트웨어융합대학 자율주행 학회</b></div>
+  </header>
+
+  <section class="hero">
+    <h1>ORDA 교육 커리큘럼</h1>
+    <div class="sub">8번의 교육으로, 내 코드로 트랙 한 바퀴</div>
+    <p class="lead">이론 설명을 길게 듣는 시간이 아닙니다. 실제 대회에서 달렸던 차의 주행 기록을
+      화면에 띄워놓고, 코드가 무엇을 보고 어떻게 판단하는지 눈으로 확인하면서 배웁니다.</p>
+    <div class="facts">
+      <span class="fact hi">총 8회 · 회당 1시간</span>
+      <span class="fact">오프라인</span>
+      <span class="fact">사전 지식 필요 없음</span>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="part-head"><span class="bar"></span><h2>코드가 보는 것을 눈으로</h2><span class="rng">1–2회</span></div>
+
+    <div class="s">
+      <span class="no">1회</span>
+      <h3>자율주행이 뭔지, 그리고 개발 환경 만들기</h3>
+      <ul>
+        <li>차가 스스로 달리는 원리를 <b>인지 → 판단 → 제어</b> 세 단계로 나눠 이해합니다</li>
+        <li>개발 도구 <b>ROS2</b>를 설치합니다</li>
+        <li>미리 찍어둔 실제 주행 기록(<b>rosbag</b>)을 재생하면서, 코드가 단계마다 무엇을 보고 있는지 화면으로 확인합니다</li>
+      </ul>
+    </div>
+
+    <div class="s">
+      <span class="no">2회</span>
+      <h3>코드 한 줄이 무엇을 하는지 화면으로 확인하기</h3>
+      <ul>
+        <li>카메라 <b>전처리</b> — 영상에서 차선만 또렷하게 남기기</li>
+        <li>차가 차선 중앙에서 얼마나 벗어났는지 계산하기</li>
+        <li><b>조향 안정화</b> — 핸들이 좌우로 덜덜 떨리지 않게 만들기</li>
+      </ul>
+      <div class="tail">중간 결과를 하나하나 화면에 띄워 확인하기 때문에, 코드를 눈으로 따라갈 수 있습니다.</div>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="part-head"><span class="bar"></span><h2>진짜 차량에 올리기</h2><span class="rng">3회</span></div>
+
+    <div class="s">
+      <span class="no">3회</span>
+      <h3>설계도를 그리고, 차를 움직이기</h3>
+      <ul>
+        <li>ROS2 <b>노드와 토픽</b> 설계도 그리기 — 프로그램을 어떤 조각으로 나눌지 정하는 작업입니다</li>
+        <li>실제 차량에 코드를 넣고 모터가 제대로 도는지 확인</li>
+        <li>센서에서 들어오는 데이터가 정상인지 화면으로 점검</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="part-head"><span class="bar"></span><h2>대회에서는 이렇게 했다</h2><span class="rng">4–7회</span></div>
+
+    <div class="s">
+      <span class="no">4회</span>
+      <h3>안 되는 코드를 되게 만드는 과정</h3>
+      <ul>
+        <li>코드 짜고, 돌려보고, 원인 찾고, 다시 고치는 <b>디버깅</b> 과정을 그대로 보여줍니다</li>
+        <li>그 과정에서 왜 rosbag이 꼭 필요했는지</li>
+        <li>빠르게 달릴 때 흔들리지 않도록 제어값 맞추기(<b>PID 세팅</b>)</li>
+      </ul>
+    </div>
+
+    <div class="s">
+      <span class="no">5회</span>
+      <h3>대회의 미션들, 어떻게 풀었나</h3>
+      <ul>
+        <li>장애물 회피 주행</li>
+        <li>주차 미션</li>
+        <li>신호등을 알아보게 만들기 — <b>YOLO</b> 학습 과정</li>
+        <li>라바콘 사이를 통과하는 주행</li>
+      </ul>
+    </div>
+
+    <div class="s">
+      <span class="no">6회</span>
+      <h3>실전에서 몸으로 배운 것들</h3>
+      <ul>
+        <li>제어 주기를 빠르게 만들기</li>
+        <li><b>git</b>으로 코드 관리하기</li>
+        <li>카메라 설정값 조정과 노이즈 제거</li>
+        <li>colcon build, alias 같은 사소하지만 중요한 습관</li>
+      </ul>
+    </div>
+
+    <div class="s">
+      <span class="no">7회</span>
+      <h3>설계를 제대로 다시 보기</h3>
+      <ul>
+        <li>ROS2 노드와 토픽을 어떤 기준으로 나눠야 하는지 자세히 다룹니다</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="part">
+    <div class="part-head"><span class="bar"></span><h2>마무리</h2><span class="rng">8회</span></div>
+    <div class="s">
+      <span class="no">8회</span>
+      <h3>한 학기 내용 총정리</h3>
+      <ul>
+        <li>8번 동안 다룬 내용을 처음부터 끝까지 하나로 이어 정리합니다</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="terms">
+    <h2>이런 말이 나옵니다</h2>
+    <p class="cap">지금 몰라도 괜찮습니다. 교육 중에 하나씩 설명합니다.</p>
+    <dl>
+      <dt>ROS2</dt>
+      <dd>카메라·모터·프로그램이 서로 데이터를 주고받게 해주는, 로봇 개발의 공용어 같은 도구입니다.</dd>
+      <dt>노드 · 토픽</dt>
+      <dd>프로그램을 기능별 조각(노드)으로 나누고, 그 조각들이 주고받는 데이터 통로(토픽)를 말합니다.</dd>
+      <dt>rosbag</dt>
+      <dd>차가 실제로 달릴 때 들어온 카메라·센서 데이터를 통째로 녹화해둔 파일입니다. 나중에 그대로 재생할 수 있습니다.</dd>
+      <dt>전처리</dt>
+      <dd>원본 영상을 그대로 쓰지 않고, 판단에 필요한 정보만 남도록 미리 가공하는 단계입니다.</dd>
+      <dt>조향 안정화</dt>
+      <dd>핸들 조작이 급하게 튀지 않도록 값을 조절하는 것. 자율주행이 "잘 달린다"는 느낌을 좌우합니다.</dd>
+      <dt>PID</dt>
+      <dd>목표에서 벗어난 만큼 얼마나 세게 되돌릴지 정하는 방법. 세 개의 값을 조절해 맞춥니다.</dd>
+      <dt>YOLO</dt>
+      <dd>사진 속 물체가 무엇이고 어디 있는지 빠르게 찾아내는 AI 모델입니다. 신호등 인식에 씁니다.</dd>
+    </dl>
+  </section>
+
+  <section class="join">
+    <h2>신입 부원을 모집합니다</h2>
+    <div class="rows">
+      <div class="row"><span class="k">교육 방식</span><span class="v">오프라인, 총 8회 (회당 1시간)</span></div>
+      <div class="row"><span class="k">일정</span><span class="v">시험 기간을 피해 진행하며, 자세한 일정은 OT 때 공개합니다</span></div>
+      <div class="row"><span class="k">모집 대상</span><span class="v">자율주행이 궁금한 누구나 · 사전 지식 필요 없음</span></div>
+    </div>
+    <a class="btn" href="https://forms.gle/Bww2gkvToNu1vtG38">지원서 작성하기</a>
+    <div class="qr">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApAAAAKQCAIAAACn190HAAAOxklEQVR4nO3dMY7k1gFFUbcxexHgwPtfhwMDWg0dj4IWPjRf9a55Tjzo+UWy6oLR+3qe5x8AwLZ/fvoAAMCfE2wACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAI+HH7P/jtX/++/V+8yu///c/Rv799/evnue30894+/9r1X7s+t9WvP9+7/Xx6wwaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoCA63vYp+p7t6fW9mjXrv/aPnT9PPX7W79fdWvPz21r99cbNgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AATM7WGfWtsrtRf7vfr+8W1r+81r56m7/fyvWTt//ffBGzYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAE5Pew+d7a/u7aHvNta+ev75Gv7XPXPy8t3rABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgwB42P6nvZ59a24de+7yn1vak1+6XfWv+Cm/YABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAEJDfw7Yv+721feW1feK1Pe/6fvbt6396ntu/D/X7ddvaeeq8YQNAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0DA3B727b1Yvlfft67//TX167N2/rXrc2rtPG/jDRsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACru9hn+6/8ln1feJT9efT+T/79+tcnxZv2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABBwfQ/7ttv7zadO92Xr+9Br519z+3qeql//tedt7e/Xfw9Pve3zesMGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAgPwe9qm1fdm1feLbe8Nr+7Wn1u7X2h7zqdvPQ/15W7P2PKx9H2/zhg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABX8/zfPoMf6v6Pu7a/uvafu3anrf71XL792HtetY/79rv+e3P6w0bAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAn7c/g/q+7tre8lv239d+7yn1p6Hte9X/frcfj7X7u/a933teb7NGzYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAEfD3P8+kz/GRtD7W+x1zfD17bu60/D7et7Umvedv1Wft9rv9eecMGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAgB+3/4O1PdHb+7Jr+823rd3f29b2jH1f+CvWnue1/e+159MbNgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAR8Pc/z6TP85Pa+8tre6m23r0/9+q+df23feu08a972/XKe793+vnjDBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgID8Hvaa23uot63tJd9mn/jXqu9nrz3Pa5/3bb8Pa7xhA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQMDcHvaptb3YU/aY/7///qm189y2tpe8dn9PrZ1/7fu49vdPecMGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAgOt72Gt7omt7sWvW9mVP1a//bWv72fXnZ+337ba1z7t2ntu8YQNAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0DAj9v/wdre7Zq1fd+3qe/p1r8v9fO/7fdtbS987frf/n3whg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQAB1/ew6/uvp+r7yqduf97Tv792/dfOs/Z5T63tH6/9vq19v+rWfp+9YQNAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0DA9T3sU2t7vW87z9qe7toebd3b9oxPrV2ftf3vNbd/T9Z+r7xhA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQIBgA0CAYANAgGADQMDX8zyfPsPf6vZe7Np+9m31z1vfG67vha/tGd/mfn1W/fzesAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBgbg+7vn/8tr3e+vlPeT5/7d8/tfa83Va/X7e97fn3hg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQAB1/ew7de21O9XfY+5fv7b1vba69/3U2v70Kfq5/eGDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAE/Pn2AP1rbH729p7u2z/q2veH6+W9bO//a/br9/V37vPXv46m132dv2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAwt4d929re6tv2hk+tnee2tf3jteu/9n1Z288+tXZ/16w9b96wASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABICC/h317X/b2XuzaPm59f3ft/Gt7w2vP26m163nb2v1a+/1c+77fPo83bAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAjI72GfWtvTvb0vW9+vXdufftv+7tp5Tq2dZ+37u/b7cFv9efaGDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGv28Ne2w8+tbbPemptr7f+PKx93lNr12eN6/NZa98vb9gAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQINgAECDYABAg2AAQcH0P+/Y+6Nq+79p56vvTb9vrXdvnXnue185z6vbzvHZ9PG+/ljdsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACPh6nufqf/C2PePb1vaS16zt165dz7Xrc9va9b/tbXv29fOc8oYNAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAYINAAGCDQABgg0AAT8+fYA/stf7WfU93bXreWrt+b99f29b249/237zKef5njdsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACJjbwz61tn+8tp9qT/d7a3vPa8/zqbXreer29a///TVv+7zesAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASAgv4dNy+295LV93LXznFrb/17bO3/b37+tvqd+mzdsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACLCHzU/q+7L185+6vX9c3yeu70OfWtvPtqf+a3nDBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgADBBoAAwQaAAMEGgID8Hvba/u6at+0B37a2j3vqbedZu19v+37d/rxrz/Nt3rABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgQLABIECwASBAsAEgYG4P+217sWvW9oDX9ozX1K/P7fOv7cG/7frfvp5v64U3bAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAj4ep7n02cAAP6EN2wACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACBBsAAgQbAAIEGwACPgf2u3PXoyRCp0AAAAASUVORK5CYII=" alt="지원 구글폼 QR">
+      <p>휴대폰으로 보고 있다면 위 버튼을 누르세요.<br>다른 기기로 보고 있다면 QR을 찍으면 됩니다.</p>
+    </div>
+  </section>
+
+  <p class="foot">한양대학교 ERICA 소프트웨어융합대학 자율주행 학회 ORDA</p>
+</div>
+</body>
+</html>
